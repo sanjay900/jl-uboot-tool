@@ -328,6 +328,8 @@ class DasShell(cmd.Cmd):
             fil.seek(0, 2)
             length = fil.tell()
             fil.seek(0)
+            if args[1].endswith("ufw"):
+                fil.seek(0x400, 0)
 
             self.flash_erase(address, length)
             self.flash_write_file(address, length, fil)
